@@ -1011,6 +1011,12 @@ elseif(HAVE_LIBSOCKET)
   endif()
 endif()
 
+if (NOT IOS)
+  check_symbol_exists(socket        "${CURL_INCLUDES}" HAVE_SOCKET)
+else()
+  set(HAVE_SOCKET TRUE)
+endif()
+
 check_symbol_exists(basename      "${CURL_INCLUDES}" HAVE_BASENAME)
 check_symbol_exists(select        "${CURL_INCLUDES}" HAVE_SELECT)
 check_symbol_exists(poll          "${CURL_INCLUDES}" HAVE_POLL)
