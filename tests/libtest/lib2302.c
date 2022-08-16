@@ -97,12 +97,17 @@ static size_t writecb(unsigned char *buffer,
 {
   size_t i;
   size_t incoming = nitems;
+  struct curl_ws_metadata *meta;
   (void)size;
-  fprintf(stderr, "Called CURLOPT_WRITEFUNCTION with %u bytes: ",
-          (int)nitems);
   for(i = 0; i < nitems; i++)
-    fprintf(stderr, "%02x ", (unsigned char)buffer[i]);
-  fprintf(stderr, "\n");
+    printf("%02x ", (unsigned char)buffer[i]);
+  printf("\n");
+
+  meta = curl_ws_meta(easy);
+  if(meta)
+    printf("RECFLAGS: %x\n", meta->recvflags);
+  else
+    fprintf(stderr, "RECFLAGS: NULL\n");
 
   /* this assumes we get a simple TEXT frame first */
   {
