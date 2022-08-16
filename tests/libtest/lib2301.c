@@ -24,6 +24,7 @@
 
 #include "test.h"
 
+#ifdef USE_WEBSOCKETS
 #if 0
 
 static int ping(CURL *curl, const char *send_payload)
@@ -146,3 +147,7 @@ int test(char *URL)
   curl_global_cleanup();
   return (int)res;
 }
+
+#else /* no websockets */
+NO_SUPPORT_BUILT_IN();
+#endif

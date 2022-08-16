@@ -24,6 +24,8 @@
 
 #include "test.h"
 
+#ifdef USE_WEBSOCKETS
+
 #if 0
 
 static int ping(CURL *curl, const char *send_payload)
@@ -94,21 +96,19 @@ static size_t writecb(unsigned char *buffer,
                       size_t size, size_t nitems, CURL *easy)
 {
   size_t i;
-  size_t sent;
   size_t incoming = nitems;
+  (void)size;
   fprintf(stderr, "Called CURLOPT_WRITEFUNCTION with %u bytes: ",
           (int)nitems);
   for(i = 0; i < nitems; i++)
     fprintf(stderr, "%02x ", (unsigned char)buffer[i]);
   fprintf(stderr, "\n");
-  (void)size;
 
   /* this assumes we get a simple TEXT frame first */
   {
     CURLcode result = CURLE_OK;
     fprintf(stderr, "send back a TEXT\n");
     (void)easy;
-    (void)sent;
     /*result = curl_ws_send(easy, pong, 2, &sent, 0);*/
     if(result)
       nitems = 0;
@@ -146,3 +146,7 @@ int test(char *URL)
   curl_global_cleanup();
   return (int)res;
 }
+
+#else
+NO_SUPPORT_BUILT_IN();
+#endif
