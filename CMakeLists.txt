@@ -1012,7 +1012,6 @@ elseif(HAVE_LIBSOCKET)
 endif()
 
 check_symbol_exists(basename      "${CURL_INCLUDES}" HAVE_BASENAME)
-check_symbol_exists(socket        "${CURL_INCLUDES}" HAVE_SOCKET)
 check_symbol_exists(select        "${CURL_INCLUDES}" HAVE_SELECT)
 check_symbol_exists(poll          "${CURL_INCLUDES}" HAVE_POLL)
 check_symbol_exists(strdup        "${CURL_INCLUDES}" HAVE_STRDUP)
