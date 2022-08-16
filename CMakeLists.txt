@@ -554,8 +554,6 @@ if(NOT CURL_DISABLE_LDAP)
 
   option(CMAKE_USE_OPENLDAP "Use OpenLDAP code." OFF)
   mark_as_advanced(CMAKE_USE_OPENLDAP)
-  # set(CMAKE_LDAP_LIB "ldap" CACHE STRING "Name or full path to ldap library")
-  # set(CMAKE_LBER_LIB "lber" CACHE STRING "Name or full path to lber library")
 
   if(CMAKE_USE_OPENLDAP AND USE_WIN32_LDAP)
     message(FATAL_ERROR "Cannot use USE_WIN32_LDAP and CMAKE_USE_OPENLDAP at the same time")
@@ -568,8 +566,6 @@ if(NOT CURL_DISABLE_LDAP)
   else()
     # Check for LDAP
     set(CMAKE_REQUIRED_LIBRARIES ${OPENSSL_LIBRARIES})
-    check_library_exists_concat(${CMAKE_LDAP_LIB} ldap_init HAVE_LIBLDAP)
-    check_library_exists_concat(${CMAKE_LBER_LIB} ber_init HAVE_LIBLBER)
 
     set(CMAKE_REQUIRED_INCLUDES_BAK ${CMAKE_REQUIRED_INCLUDES})
     set(CMAKE_LDAP_INCLUDE_DIR "" CACHE STRING "Path to LDAP include directory")
