@@ -1711,6 +1711,7 @@ CURLcode Curl_http_done(struct Curl_easy *data,
   Curl_mime_cleanpart(&http->form);
   Curl_dyn_reset(&data->state.headerb);
   Curl_hyper_done(data);
+  Curl_ws_done(data);
 
   if(status)
     return status;

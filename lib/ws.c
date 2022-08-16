@@ -136,7 +136,7 @@ CURLcode Curl_ws_accept(struct Curl_easy *data)
 #define WSBIT_OPCODE_BIN   (2)
 #define WSBIT_OPCODE_CLOSE (8)
 #define WSBIT_OPCODE_PING  (9)
-#define WSBIT_OPCODE_PONG  (10)
+#define WSBIT_OPCODE_PONG  (0xa)
 #define WSBIT_OPCODE_MASK  (0xf)
 
 #define WSBIT_MASK 0x80
@@ -435,7 +435,7 @@ static size_t ws_packet(struct Curl_easy *data,
     infof(data, "WS: send OPCODE PING");
   }
   else if(flags & CURLWS_PONG) {
-    opcode = WSBIT_OPCODE_PING;
+    opcode = WSBIT_OPCODE_PONG;
     infof(data, "WS: send OPCODE PONG");
   }
   else {
@@ -544,6 +544,13 @@ CURLcode curl_ws_send(struct Curl_easy *data, const void *buffer,
   *sent = bytes;
 
   return result;
+}
+
+void Curl_ws_done(struct Curl_easy *data)
+{
+  struct websockets *wsp = &data->req.p.http->ws;
+  DEBUGASSERT(wsp);
+  Curl_dyn_free(&wsp->buf);
 }
 
 #else

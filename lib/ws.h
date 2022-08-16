@@ -40,9 +40,11 @@ CURLcode Curl_ws_request(struct Curl_easy *data, REQTYPE *req);
 CURLcode Curl_ws_accept(struct Curl_easy *data);
 
 size_t Curl_ws_writecb(char *buffer, size_t size, size_t nitems, void *userp);
+void Curl_ws_done(struct Curl_easy *data);
 
 #else
 #define Curl_ws_request(x,y) CURLE_OK
+#define Curl_ws_done(x) Curl_nop_stmt
 #endif
 
 #endif /* HEADER_CURL_WS_H */
