@@ -554,8 +554,8 @@ if(NOT CURL_DISABLE_LDAP)
 
   option(CMAKE_USE_OPENLDAP "Use OpenLDAP code." OFF)
   mark_as_advanced(CMAKE_USE_OPENLDAP)
-  set(CMAKE_LDAP_LIB "ldap" CACHE STRING "Name or full path to ldap library")
-  set(CMAKE_LBER_LIB "lber" CACHE STRING "Name or full path to lber library")
+  # set(CMAKE_LDAP_LIB "ldap" CACHE STRING "Name or full path to ldap library")
+  # set(CMAKE_LBER_LIB "lber" CACHE STRING "Name or full path to lber library")
 
   if(CMAKE_USE_OPENLDAP AND USE_WIN32_LDAP)
     message(FATAL_ERROR "Cannot use USE_WIN32_LDAP and CMAKE_USE_OPENLDAP at the same time")
