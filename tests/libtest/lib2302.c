@@ -148,5 +148,5 @@ int test(char *URL)
 }
 
 #else
-NO_SUPPORT_BUILT_IN();
+NO_SUPPORT_BUILT_IN
 #endif
