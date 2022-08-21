@@ -439,7 +439,7 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
   endif()
 endif()
 
-if(CMAKE_USE_OPENSSL)
+if(TRUE)
   find_package(OpenSSL REQUIRED)
   set(SSL_ENABLED ON)
   set(USE_OPENSSL ON)
