@@ -47,6 +47,9 @@ include(CheckCCompilerFlag)
 
 project(CURL)
 
+option(CMAKE_USE_OPENSSL ON)
+option(BUILD_CURL_EXE FALSE)
+
 
 # aui.boot precompiled binaries
 file(
