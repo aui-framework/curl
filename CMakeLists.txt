@@ -51,22 +51,6 @@ option(CMAKE_USE_OPENSSL ON)
 option(BUILD_CURL_EXE FALSE)
 
 
-# aui.boot precompiled binaries
-file(
-        DOWNLOAD
-        https://raw.githubusercontent.com/aui-framework/aui/master/aui.boot.cmake
-        ${CMAKE_CURRENT_BINARY_DIR}/aui.boot.cmake)
-include(${CMAKE_CURRENT_BINARY_DIR}/aui.boot.cmake)
-
-auib_import(ZLIB https://github.com/aui-framework/zlib)
-auib_import(OpenSSL https://github.com/aui-framework/openssl-cmake/archive/refs/heads/master.zip
-            ARCHIVE
-            PRECOMPILED_URL_PREFIX https://github.com/aui-framework/openssl-cmake/releases/download/refs%2Fheads%2Fmaster)
-
-
-auib_precompiled_binary()
-
-
 file(STRINGS ${CURL_SOURCE_DIR}/include/curl/curlver.h CURL_VERSION_H_CONTENTS REGEX "#define LIBCURL_VERSION( |_NUM )")
 string(REGEX MATCH "#define LIBCURL_VERSION \"[^\"]*"
   CURL_VERSION ${CURL_VERSION_H_CONTENTS})
