@@ -957,7 +957,11 @@ static int dprintf_formatf(
 
         /* NOTE NOTE NOTE!! Not all sprintf implementations return number of
            output characters */
+#ifdef HAVE_SNPRINTF
+        (snprintf)(work, sizeof(work), formatbuf, p->data.dnum);
+#else
         (sprintf)(work, formatbuf, p->data.dnum);
+#endif
         DEBUGASSERT(strlen(work) <= sizeof(work));
         for(fptr = work; *fptr; fptr++)
           OUTCHAR(*fptr);

@@ -3333,6 +3333,7 @@ AC_CHECK_FUNCS([fnmatch \
   setlocale \
   setmode \
   setrlimit \
+  snprintf \
   usleep \
   utime \
   utimes
