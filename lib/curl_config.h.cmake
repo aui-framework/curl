@@ -530,6 +530,9 @@
 /* Define to 1 if you have the `setrlimit' function. */
 #cmakedefine HAVE_SETRLIMIT 1
 
+/* Define to 1 if you have the `snprintf' function. */
+#cmakedefine HAVE_SNPRINTF 1
+
 /* Define to 1 if you have the setsockopt function. */
 #cmakedefine HAVE_SETSOCKOPT 1
 
