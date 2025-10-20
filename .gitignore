@@ -2,6 +2,7 @@
 #
 # SPDX-License-Identifier: curl
 
+.idea
 *.asc
 *.dll
 *.exe
